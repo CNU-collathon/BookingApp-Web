@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
-function App() {
+const App = () => {
+
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
+  const onChangeId = e => setId(e.target.value);
+  const onChangePassword = e => setPassword(e.target.value);
+  const signIn = () => {
+    {/* signIn process ... */}
+  };
+  const signUp = () => {
+    {/* signUp process ... */}
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Reservation</h1>
+      <h3>management system</h3>
+      ID <input type="text" value={id} onChange={onChangeId}></input>
+      <br/>
+      PW <input type="password" value={password} onChange={onChangePassword}></input>
+      <br/>
+      <button onClick={signIn}>Sign In</button><button onClick={signUp}>Sign Up</button>
     </div>
-  );
+  )
 }
 
 export default App;
