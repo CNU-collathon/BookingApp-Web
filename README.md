@@ -1,4 +1,4 @@
-### BookingServiceForSelfEmployed
+### BookingApp-Web
 
 2019 Software Engineering Team Project
 
