@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import Reservation from './Reservation';
 export default function ReservationManagement() {
-
+    const backendURL = "http://localhost:3100/"
+    const WorkPlaceID = "4d4525fb"
     // const [ID, setID] = useState('')
     // const [WorkPlaceID, setWorkPlaceID] = useState('')
     // const [MenuNames, setMenuNames] = useState('')
@@ -12,76 +13,85 @@ export default function ReservationManagement() {
     // const [Detail, setDetail] = useState('')
     // const [PhoneNum, setPhoneNum] = useState('')
 
-    // const [data, setData] = useState('')
+    const [data, setData] = useState('')
 
-    const fromDB = [
-        {"ID":"1",
-        "WorkPlaceID":"2",
-        "MenuNames":[
-            "pizza1",
-            "pizaa2"
-            ],
-        "ReservedTime":"2019-11-16",
-        "Personnel":"3",
-        "Detail":"bla-bla-bla",
-        "PhoneNum":"01051488587"
-        },
-        {"ID":"2",
-        "WorkPlaceID":"2",
-        "MenuNames":[
-            "pizza1",
-            "pizaa2"
-            ],
-        "ReservedTime":"2019-11-16",
-        "Personnel":"3",
-        "Detail":"bla-bla-bla",
-        "PhoneNum":"01051488587"
-        }
-    ]
+    // const fromDB = [
+    //     {
+    //         "Detail": {
+    //             "UserName": "ewf",
+    //             "PhoneNum": "fwef"
+    //         },
+    //         "_id": "5dd28aba32b18f24a8798e80",
+    //         "Menu": [
+    //             {
+    //                 "_id": "5dd28aba32b18f24a8798e81",
+    //                 "MenuName": "Menu1111",
+    //                 "Price": 12000,
+    //                 "Personnel": 1
+    //             },                {
+    //                 "_id": "5dd28aba32b18f24a8798e81",
+    //                 "MenuName": "Menu1111",
+    //                 "Price": 12000,
+    //                 "Personnel": 1
+    //             }
+    //         ],
+    //         "WorkPlaceID": "4d4525fb",
+    //         "ReservedDateTime": "2019-12-19T06:00:00.000Z",
+    //         "EndDateTime": "2019-12-19T06:00:00.000Z",
+    //         "ID": "5cb9320d",
+    //         "__v": 0
+    //     },
+    //     {
+    //         "Detail": {
+    //             "UserName": "ewf",
+    //             "PhoneNum": "fwef"
+    //         },
+    //         "_id": "5dd28aba32b18f24a8798e80",
+    //         "Menu": [
+    //             {
+    //                 "_id": "5dd28aba32b18f24a8798e81",
+    //                 "MenuName": "Menu1111",
+    //                 "Price": 12000,
+    //                 "Personnel": 1
+    //             }
+    //         ],
+    //         "WorkPlaceID": "4d4525fb",
+    //         "ReservedDateTime": "2019-12-19T06:00:00.000Z",
+    //         "EndDateTime": "2019-12-19T06:00:00.000Z",
+    //         "ID": "5cb9320d",
+    //         "__v": 0
+    //     }
+    // ]
     
-    // setData(fromDB)
-    const _renderReservationManagment = () => {
-        const Reservations = fromDB.map( ReservationManagement => {
-            // console.log(ReservationManagement["ID"])
-            return(
-                <Reservation ID={ReservationManagement["ID"]} 
-                             WorkPlaceID={ReservationManagement["WorkPlaceID"]}
-                             MenuNames={ReservationManagement["MenuNames"]}
-                             Personnel={ReservationManagement["Personnel"]}
-                             ReservedTime={ReservationManagement["ReservedTime"]}
-                             Detail={ReservationManagement["Detail"]}
-                             PhoneNum={ReservationManagement["PhoneNum"]}></Reservation>
+
+    useEffect(() => {
+        axios.get(backendURL + "workplace/reservation/" + WorkPlaceID).
+        then( response => {
+            console.log(response)
+            const Reservations = response.data.map(
+                ReservationManagement => {
+                    return(
+                        <Reservation ID={ReservationManagement["ID"]} 
+                                     Menu={ReservationManagement["Menu"]}
+                                     Price={ReservationManagement["Price"]}
+                                     Personnel={ReservationManagement["Personnel"]}
+                                     ReservedTime={ReservationManagement["ReservedDateTime"]}
+                                     EndDateTime={ReservationManagement["EndDateTime"]}
+                                     Detail={ReservationManagement["Detail"]}>
+                        </Reservation>             
+                    )
+                }
             )
-        })
-        // console.log(Reservations)
-        return Reservations
-    }
+            setData(Reservations)
+            }
+        )
+    }, [])
 
-    // function SetDatasFromDB (ReservationManagements) {
-    //     setID(ReservationManagements["ID"]);
-    //     setWorkPlaceID(ReservationManagements["WorkPlaceID"]);
-    //     setMenuNames(ReservationManagements["MenuNames"]);
-    //     setPersonnel(ReservationManagements["Personnel"]);
-    //     setDetail(ReservationManagements["Detail"]);
-    //     setPhoneNum(ReservationManagements["PhoneNum"]);
-    // }
-
-    // axios.get("mongoose api address")
-    //      .then(response => response.json())
-    //      .then(ReservationManagements => ReservationManagements.forEach(ReservationManagement =>{
-         
-    //      }))
-
- 
-    // SetDatasFromDB(fromDB);
-    
-
-    
 
     return (
         <div>
             <h1>ReservationManagement</h1>
-            {_renderReservationManagment()}
+            {data}
         </div>
     )
 }
