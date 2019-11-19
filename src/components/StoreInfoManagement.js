@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState , useEffect} from 'react'
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { Button , Form } from 'antd';
 export default function StoreInfoManagement() {
     const [SelfEmployedID, setSelfEmployedID] = useState('')
     const [WorkPlaceID, setWorkPlaceID] = useState('')
-
     const [Address,setAddress] = useState('')
     const [WorkPlaceInfo,setWorkPlaceInfo] = useState('')
     const onChangeSelfEmployedID = e => setSelfEmployedID(e.target.value);
@@ -20,21 +20,43 @@ export default function StoreInfoManagement() {
       // {/* SelfEmployedID valiDation/}
     }
 
+    
+    const fromDB = {
+        "SelfEmployedID":"2",
+        "WorkPlaceID":"2",
+        "Address":"Daejeon",
+        "WorkPlaceInfo":"청춘우동까스",
+    }
+
+    useEffect(() => {
+      console.log(1);
+      setSelfEmployedID(fromDB["SelfEmployedID"]);
+      setWorkPlaceID(fromDB["WorkPlaceID"]);
+      setAddress(fromDB["Address"]);
+      setWorkPlaceInfo(fromDB["WorkPlaceInfo"]);
+      console.log(1);
+    }, []);
 
     return (
         <div>
             <h1>StoreInfoManagement</h1>
-            <form>
+            <Form>
+              <Form.Item>
                 SelfEmployedID <input type="text" value={SelfEmployedID} onChange={onChangeSelfEmployedID} required='true'></input>
-                <br/>
+              </Form.Item>  
+              <Form.Item>
                 WorkPlaceID <input type="WorkPlaceID" value={WorkPlaceID} onChange={onChangeWorkPlaceID} required='true'></input>
-                <br/>
-                Address <input type="Address" value={Address} onChange={onChangeAddress}></input>
-                <br/>
+              </Form.Item>
+              <Form.Item>
+              Address <input type="Address" value={Address} onChange={onChangeAddress}></input>
+              </Form.Item>
+              <Form.Item>
                 WorkPlaceInfo <input type="WorkPlaceInfo" value={WorkPlaceInfo} onChange={onChangeWorkPlaceInfo}></input>
-                <br/>
-                <input type = 'submit' onClick={saveInfo}></input> <Link to='/SignIn'><button onClick={goBack}>뒤로가기</button></Link>
-            </form>
+              </Form.Item>
+              <Form.Item>
+                 <Button onClick={saveInfo} htmlType="submit" >Save</Button> <Link to='/SignIn'><Button onClick={goBack}>뒤로가기</Button></Link>
+              </Form.Item>
+            </Form>
         </div>
     )
 }

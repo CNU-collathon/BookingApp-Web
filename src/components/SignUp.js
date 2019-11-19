@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
-
+import { Button ,Form} from 'antd';
 export default function SignUp() {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
@@ -26,19 +26,26 @@ export default function SignUp() {
     <div>
       <h1>SignUp</h1>
       <h3>management system</h3>
-      <form>
-        ID <input type="text" value={id} onChange={onChangeId} required='true'></input> <button onClick={validateId}>Validation</button>
-        <br/>
-        PW <input type="password" value={password} onChange={onChangePassword} required='true'></input>
-        <br/>
-        PW check <input type="password" value={passwordCheck} onChange={onChangePasswordCheck} required='true'></input>
-        <br/>
-        E-mail <input type="email" value={email} onChange={onChangeEmail}></input>
-        <br/>
-        Phone Number <input type="tel" value={tel} onChange={onChangeTel}></input>
-        <br/>
-        <input type = 'submit' onClick={signUp} ></input> <Link to='/'><button onClick={goBack}>뒤로가기</button></Link>
-      </form>
+      <Form>
+        <Form.Item>
+          ID <input type="text" value={id} onChange={onChangeId} required='true'></input> <Button onClick={validateId}>Validation</Button>
+        </Form.Item>
+        <Form.Item>
+          PW <input type="password" value={password} onChange={onChangePassword} required='true'></input>
+        </Form.Item>
+        <Form.Item>
+          PW check <input type="password" value={passwordCheck} onChange={onChangePasswordCheck} required='true'></input>
+        </Form.Item>
+        <Form.Item>
+          E-mail <input type="email" value={email} onChange={onChangeEmail}></input>
+        </Form.Item>
+        <Form.Item>
+          Phone Number <input type="tel" value={tel} onChange={onChangeTel}></input>
+        </Form.Item>
+        <Form.Item>
+          <Button onClick={signUp} htmlType="submit" >SignUp</Button> <Link to='/'><Button onClick={goBack}>뒤로가기</Button></Link>
+        </Form.Item>
+        </Form>
     </div>
 
   )

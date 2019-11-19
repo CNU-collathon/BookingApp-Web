@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
-
+import { Button } from 'antd';
+import { Input, Tooltip, Icon } from 'antd';
+import 'antd/dist/antd.css';
 export default function SignIn() {
   
   const [id, setId] = useState('')
@@ -15,11 +17,21 @@ export default function SignIn() {
     <div>
     <h1>Reservation</h1>
     <h3>management system</h3>
-    ID <input type="text" value={id} onChange={onChangeId}></input>
+    ID<Input
+      placeholder="Enter your username"
+      prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+      suffix={
+        <Tooltip title="Extra information">
+          <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+        </Tooltip>
+      }
+    />
+    {/* ID <input type="text" value={id} onChange={onChangeId}></input> */}
     <br/>
-    PW <input type="password" value={password} onChange={onChangePassword}></input>
+    PW <Input.Password placeholder="input password" value={password} onChange={onChangePassword} />
+    {/* PW <input type="password" value={password} onChange={onChangePassword}></input> */}
     <br/>
-    <Link to ="SignIn"><button onClick={signIn}>Sign In</button></Link><Link to="SignUp"><button>Sign Up</button></Link>
+    <Link to ="SignIn"><Button  onClick={signIn}>Sign In</Button></Link><Link to="SignUp"><Button>Sign Up</Button></Link>
   </div>
   )
 }

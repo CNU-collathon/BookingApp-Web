@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import ReservationManagement from './ReservationManagement';
 import StoreInfoManagement from './StoreInfoManagement';
-
+import { Button } from 'antd';
 export default function SelectPage() {
 
   const toReservationManagement = () =>{
@@ -18,9 +18,9 @@ export default function SelectPage() {
     <Router>
     <Route exact={true} path="/SignIn">
     <div>
-      <Link to="/ReservationManagement"><button>예약관리</button></Link>
+      <Link to="/ReservationManagement"><Button block>예약관리</Button></Link>
       <br/>
-      <Link to="/StoreInfoManagement"><button>사업장정보관리</button></Link>
+      <Link to="/StoreInfoManagement"><Button block>사업장정보관리</Button></Link>
     </div>
     </Route>
     <Route exact={true} path="/ReservationManagement" component={ReservationManagement}></Route>
