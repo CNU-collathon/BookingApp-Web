@@ -128,7 +128,7 @@ export default function StoreInfoManagement() {
               Store Image <br/>
               <FileBase64
                   multiple={ false } onDone={ getFiles.bind(this) } ></FileBase64>
-                  {/* 자리 */}
+                  <img height="300px" width="300px" src={`data:image/jpeg;base64,${image.File}`} />
               <Form.Item>
                 <div id="StoreInfoButton">
                   <Button id="StoreInfoSaveButton" onClick={ isEdit == "true" ? editInfo : saveInfo }>Save</Button>
@@ -140,7 +140,4 @@ export default function StoreInfoManagement() {
         </div>
     )
 }
-
-//                  <img height="300px" width="300px" src={`data:image/jpeg;base64,${image.File}`} />
-
 
