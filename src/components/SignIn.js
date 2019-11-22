@@ -27,7 +27,10 @@ export default function SignIn() {
       console.log('response', res)
       if(res.data['result']==1){
         setLongin(true)
+        localStorage.setItem('localSelfId',id)
+        console.log(localStorage.getItem('localSelfId'))
         alert('로그인성공')
+        // browserHistory.push("/SignIn");
         // console.log(WorkPlaceID)
         // confirm({
         //   content: <Link to ={login}><Button onClick={destroyAll}>로그인성공</Button></Link>,
@@ -38,8 +41,7 @@ export default function SignIn() {
         //     console.log('Cancel');
         //   },
         // });
-        localStorage.setItem('localSelfId',id)
-        console.log(localStorage.getItem('localSelfId'))
+
       }else{
         alert("일치하는 정보가 없습니다.")
         // confirm({
