@@ -1,13 +1,19 @@
 
+/* ---------- header page ---------- */
+body{
+    background-color: #EAEAEA;
+}
+
 .logo {
     height: 3.5rem;
-    background-color: #212529;
+    background-color: #3cb371;
     width: 100vw;
     line-height: 3.5rem;
-    color: white;
+    color: #fff4f4;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+    position: relative;
 }
 
 .menu {
@@ -33,4 +39,110 @@
 
 .menu-item:active, .menu-item.active {
     background-color: #1862ab;
+}
+
+
+/*---------- SignIn page -----------*/
+
+                /*공통 특성 가운데 정렬*/
+.ReservationItem{
+    position: absolute;
+    top:35%;
+    left:50%;
+    width:300px;
+    height:300px;
+    margin:-150px 0 0 -150px;
+   
+}
+
+.signInButton{
+    text-align: center;
+}
+
+#signInButton_1{
+    margin-right: 5px;
+}
+
+#signUpButton_1{
+    margin-left: 5px;
+}
+
+
+#signInTitle{
+    text-align: center;
+    font-size: 35;
+}
+
+#signInSubtitle{
+    text-align: center;
+    font-size: 25;
+}
+
+/*---------- SignUp page -----------*/
+.signUpInput{
+    width: 300px;
+    height: 30px;
+}
+
+#signUpTitle{
+    text-align: center;
+    font-size: 35;
+}
+
+#signUpSubtitle{
+    text-align: center;
+    font-size: 25;
+}
+
+#validationButton{
+    text-align: right;
+}
+
+#signUpButton{
+    text-align: center;
+}
+
+#signUpButton_2{
+    margin-right: 5px;
+}
+
+#signUpBackButton_2{
+    margin-left: 5px;
+}
+
+/*---------- select page -----------*/
+#selectOptionButton_1{
+    width: 160px;
+}
+
+#selectOptionButton_2{
+    width: 160px;
+    
+}
+
+#selectOptionButton{
+    text-align: center;
+}
+
+/*---------- reservationManagement page -----------*/
+#reservationLookup{
+    scroll-margin-left: 50;
+}
+
+/*---------- StoreInfoManagement page -----------*/
+.StoreInfoInput{
+    width: 300px;
+    height: 30px;
+}
+
+#StoreInfoButton{
+    text-align: right;
+}
+
+#StoreInfoSaveButton{
+    margin-right: 5px;
+}
+
+#StoreInfoBackButton{
+    margin-left: 5px;
 }

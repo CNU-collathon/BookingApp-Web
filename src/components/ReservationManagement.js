@@ -4,7 +4,6 @@ import axios from 'axios';
 import Reservation from './Reservation';
 export default function ReservationManagement() {
     const backendURL = "http://bookingapp.ga:3000/"
-    // const backendURL = "http://localhost:3100/"
     const WorkPlaceID = localStorage.getItem("WorkPlaceID")
     // const [ID, setID] = useState('')
     // const [WorkPlaceID, setWorkPlaceID] = useState('')
@@ -96,7 +95,7 @@ export default function ReservationManagement() {
 
 
     return (
-        <div>
+        <div id="reservationLookup">
             <h1>ReservationManagement</h1>
             {data}
         </div>
