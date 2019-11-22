@@ -5,7 +5,7 @@ import FileBase64 from 'react-file-base64';
 import axios from 'axios';
 export default function StoreInfoManagement() {
 
-    const backendURL = "http://localhost:3100/"
+    const backendURL = "http://bookingapp.ga:3000/"
     // const WorkPlaceID = 
     
     const [workPlaceInfo, setWorkPlaceInfo] = useState('')
@@ -103,33 +103,44 @@ export default function StoreInfoManagement() {
   }, [])
 
     return (
-        <div>
+        <div className="ReservationItem">
             <h1>StoreInfoManagement</h1>
             <Form>
               <Form.Item>
-                SelfEmployedID : {localStorage.getItem('localSelfId')}
+                <div>SelfEmployedID : {localStorage.getItem('localSelfId')}</div>
               </Form.Item>  
               <Form.Item>
-              Address <input type="text" value={address} onChange={onChangeAddress}></input>
+              Address <br/>
+              <input className="StoreInfoInput"type="text" value={address} onChange={onChangeAddress}></input>
               </Form.Item>
               <Form.Item>
-                WorkPlaceInfo <input type="text" value={workPlaceInfo} onChange={onChangeWorkPlaceInfo}></input>
+                WorkPlaceInfo <br/>
+                <input className="StoreInfoInput" type="text" value={workPlaceInfo} onChange={onChangeWorkPlaceInfo}></input>
               </Form.Item>
               <Form.Item>
-                Name <input type="text" value={name} onChange={onChangeName}></input>
+                Name <br/>
+                <input className="StoreInfoInput" type="text" value={name} onChange={onChangeName}></input>
               </Form.Item>
               <Form.Item>
-                Category <input type="text" value={category} onChange={onChangeCategory}></input>
+                Category <br/>
+                <input className="StoreInfoInput" type="text" value={category} onChange={onChangeCategory}></input>
               </Form.Item>
               Store Image <br/>
               <FileBase64
                   multiple={ false } onDone={ getFiles.bind(this) } ></FileBase64>
-              <img height="300px" width="300px" src={`data:image/jpeg;base64,${image.File}`} />
+                  {/* 자리 */}
               <Form.Item>
-                 <Button onClick={ isEdit=="true" ? editInfo : saveInfo }>
-                   Save</Button><Link to='/SignIn'><Button onClick={goBack}>뒤로가기</Button></Link>
+                <div id="StoreInfoButton">
+                  <Button id="StoreInfoSaveButton" onClick={ isEdit == "true" ? editInfo : saveInfo }>Save</Button>
+                  <Link to='/SignIn'>
+                  <Button id="StoreInfoBackButton" onClick={goBack}>뒤로가기</Button></Link>
+                </div>
               </Form.Item>
             </Form>
         </div>
     )
 }
+
+//                  <img height="300px" width="300px" src={`data:image/jpeg;base64,${image.File}`} />
+
+

@@ -17,10 +17,12 @@ export default function SelectPage() {
   return (
     <Router>
     <Route exact={true} path="/SignIn">
-    <div>
-      <Link to="/ReservationManagement"><Button block>예약관리</Button></Link>
+    <div id="selectOptionButton">
+      <br />
+      <Link to="/ReservationManagement"><Button id="selectOptionButton_1" block>예약관리</Button></Link>
       <br/>
-      <Link to="/StoreInfoManagement"><Button block>사업장정보관리</Button></Link>
+      <br/>
+      <Link to="/StoreInfoManagement"><Button id="selectOptionButton_2" block>사업장정보관리</Button></Link>
     </div>
     </Route>
     <Route exact={true} path="/ReservationManagement" component={ReservationManagement}></Route>
