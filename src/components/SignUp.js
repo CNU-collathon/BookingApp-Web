@@ -4,7 +4,8 @@ import { Button ,Form} from 'antd';
 import axios from 'axios';
 export default function SignUp() {
 
-  const backendURL = "http://localhost:3100/"
+  const backendURL = "http://bookingapp.ga:3000/"
+  // const backendURL = "http://localhost:3100/"
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')

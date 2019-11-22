@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import { Descriptions , Button, Badge} from 'antd';
+import axios from 'axios';
 export default function Reservation(props) {
 
+    const backendURL = "http://bookingapp.ga:3000/"
+    // const backendURL = "http://localhost:3100/"
     // const [ID, setID] = useState('')
     // const [WorkPlaceID, setWorkPlaceID] = useState('')
     // const [MenuNames, setMenuNames] = useState('')
@@ -9,9 +12,15 @@ export default function Reservation(props) {
     // const [Personnel, setPersonnel] = useState('')
     // const [Detail, setDetail] = useState('')
     // const [PhoneNum, setPhoneNum] = useState('')
+    const [ deleteCount, setDeleteCount] = useState('0')
 
     const deleteReservation = () => {
-
+        axios.delete(backendURL+"reservation/cancel/"+props.ID).then(
+            (response) => {
+                console.log(response.data)
+                setDeleteCount(deleteCount+1)
+            }
+        )
     }
 
     const _renderMenu = (fetcheMenu) => {
@@ -48,7 +57,7 @@ export default function Reservation(props) {
                 <Badge status="processing" text="예약" />
                 </Descriptions.Item>
 
-                <Descriptions.Item label="Manage"><Button>Delete</Button></Descriptions.Item>
+                <Descriptions.Item label="Manage"><Button onClick={deleteReservation}>Delete</Button></Descriptions.Item>
             </Descriptions>
             <br/>
         </div>

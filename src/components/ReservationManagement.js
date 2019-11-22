@@ -3,7 +3,8 @@ import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import Reservation from './Reservation';
 export default function ReservationManagement() {
-    const backendURL = "http://localhost:3100/"
+    const backendURL = "http://bookingapp.ga:3000/"
+    // const backendURL = "http://localhost:3100/"
     const WorkPlaceID = localStorage.getItem("WorkPlaceID")
     // const [ID, setID] = useState('')
     // const [WorkPlaceID, setWorkPlaceID] = useState('')
